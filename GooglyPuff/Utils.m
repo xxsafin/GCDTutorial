@@ -10,9 +10,16 @@
 
 NSString *const kPhotoManagerAddedContentNotification = @"com.selander.GooglyPuff.PhotoManagerAddedContent";
 NSString *const kPhotoManagerContentUpdateNotification = @"com.selander.GooglyPuff.PhotoMangerContentUpdate";
-NSString *const kOverlyAttachedGirlfriendURLString = @"http://i.imgur.com/UvqEgCv.png";
-NSString *const kSuccessKidURLString = @"http://i.imgur.com/dZ5wRtb.png";
-NSString *const kLotsOfFacesURLString = @"http://i.imgur.com/tPzTg7A.jpg";
+
+//NSString *const kOverlyAttachedGirlfriendURLString = @"http://i.imgur.com/UvqEgCv.png";
+//NSString *const kSuccessKidURLString = @"http://i.imgur.com/dZ5wRtb.png";
+//NSString *const kLotsOfFacesURLString = @"http://i.imgur.com/tPzTg7A.jpg";
+
+NSString *const kOverlyAttachedGirlfriendURLString = @"http://photo.yupoo.com/guoguo2baobao/DNiRiW9P/medish.jpg";
+NSString *const kSuccessKidURLString = @"http://photo.yupoo.com/guoguo2baobao/DNiQDlwc/medish.jpg";
+NSString *const kLotsOfFacesURLString = @"http://photo.yupoo.com/guoguo2baobao/DNiRtYhn/medish.jpg";
+
+
 
 typedef void (^PhotoDownloadingProgressBlock)(NSUInteger completed, NSUInteger total);
 @implementation Utils

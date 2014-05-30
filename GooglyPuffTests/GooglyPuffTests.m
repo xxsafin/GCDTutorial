@@ -45,6 +45,8 @@ const int64_t kDefaultTimeoutLengthInNanoSeconds = 10000000000; // 10 Seconds
 
 - (void)downloadImageURLWithString:(NSString *)URLString
 {
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
     NSURL *url = [NSURL URLWithString:URLString];
     __block BOOL isFinishedDownloading = NO;
     __unused Photo *photo = [[Photo alloc]

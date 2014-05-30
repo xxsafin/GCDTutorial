@@ -32,6 +32,26 @@ UIActionSheetDelegate>
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //debug snippet
+    //usage:pause debugger and resume
+#if DEBUG
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    static dispatch_source_t source = nil;
+    __typeof(self) __weak weakSelf = self;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        source = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGSTOP, 0, queue);
+        if(source)
+        {
+            dispatch_source_set_event_handler(source, ^{
+            });
+            dispatch_resume(source);
+        }
+    });
+#endif
+    
     self.library = [[ALAssetsLibrary alloc] init];
     
     // Background image setup
@@ -217,6 +237,17 @@ UIActionSheetDelegate>
 - (void)showOrHideNavPrompt
 {
     // Implement me!
+    NSUInteger count = [[PhotoManager sharedManager] photos].count;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if(!count)
+        {
+            [self.navigationItem setPrompt:@"Add photos with faces to Googlyify them!"];
+        }
+        else
+        {
+            [self.navigationItem setPrompt:nil];
+        }
+    });
 }
 
 - (void)downloadImageAssets
